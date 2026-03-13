@@ -28,4 +28,21 @@ public class Library {
 
     }
 
+    public Book searchBookById(int bookId){
+
+        return null;
+    }
+
+    public List<Book> searchBookByTitle(String title) {
+        return null;
+    }
+
+    public List<Book> searchBookByAuthor(String author) {
+        return null;
+    }
+
+    public List<Book> searchBookByGenre(String genre) {
+        return null;
+    }
+
 }
