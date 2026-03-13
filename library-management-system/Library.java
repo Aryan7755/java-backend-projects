@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.List;
 
 public class Library {
     HashMap<Integer,Book> bookMap;
@@ -11,8 +12,10 @@ public class Library {
         this.issuedBookMap = issuedBookMap;
     }
 
+    // book management methods
+
     public void addBook(Book book){
-        bookMap.put(book.getId(), book);
+        bookMap.put(book.getBookId(), book);
         System.out.println("Book added successfully.");
     }
     public void removeBook(int bookId) {

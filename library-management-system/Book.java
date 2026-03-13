@@ -1,17 +1,20 @@
 class Book {
-    int bookId;
-    String title;
-    String author;
-    boolean isIssued;
 
-    public Book(int id, String title, String author) {
+    private  final int bookId;
+    private String title;
+    private String author;
+    private String genre;
+    private boolean isIssued;
+
+    public Book(int id, String title, String author, String genre) {
         this.bookId = id;
         this.title = title;
         this.author = author;
+        this.genre = genre;
         this.isIssued = false;
     }
 
-    public int getId() {
+    public int getBookId() {
         return bookId;
     }
 
@@ -44,7 +47,11 @@ class Book {
         return isIssued;
     }
 
+    public void setIssued(boolean issued) {
+        isIssued = issued;
+    }
+
     void display() {
-        System.out.println(bookId + " " + title + " " + author + " Issued: " + isIssued);
+        System.out.println(bookId + " " + title + " " + author + " " + genre + " Issued: " + isIssued);
     }
 }
