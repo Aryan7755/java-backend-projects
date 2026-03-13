@@ -11,6 +11,22 @@ class Book {
         this.isIssued = false;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public boolean isIssued() {
+        return isIssued;
+    }
+
     void display() {
         System.out.println(id + " " + title + " " + author + " Issued: " + isIssued);
     }
