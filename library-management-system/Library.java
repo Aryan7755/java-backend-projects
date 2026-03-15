@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -6,10 +7,10 @@ public class Library {
     HashMap<Integer,Member> membersMap;
     HashMap<Integer,Book> issuedBookMap;
 
-    public Library(HashMap<Integer, Book> bookMap, HashMap<Integer, Member> membersMap, HashMap<Integer, Book> issuedBookMap) {
-        this.bookMap = bookMap;
-        this.membersMap = membersMap;
-        this.issuedBookMap = issuedBookMap;
+    public Library() {
+        bookMap = new HashMap<>();
+        membersMap = new HashMap<>();
+        issuedBookMap = new HashMap<>();
     }
 
     // book management methods
@@ -28,24 +29,61 @@ public class Library {
     }
 
     public void updateBook(int bookId, String title, String author, String genre) {
-
+        Book book = bookMap.get(bookId);
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+        book.setTitle(title);
+        book.setAuthor(author);
+        book.setGenre(genre);
     }
 
     public Book searchBookById(int bookId){
 
-        return null;
+        return bookMap.get(bookId);
     }
 
     public List<Book> searchBookByTitle(String title) {
-        return null;
+        List<Book> result = new ArrayList<>();
+
+        for (Book b : bookMap.values()) {
+
+            if (b.getTitle().equalsIgnoreCase(title)) {
+                result.add(b);
+            }
+
+        }
+
+        return result;
     }
 
     public List<Book> searchBookByAuthor(String author) {
-        return null;
+        List<Book> result = new ArrayList<>();
+
+        for (Book b : bookMap.values()) {
+
+            if (b.getAuthor().equalsIgnoreCase(author)) {
+                result.add(b);
+            }
+
+        }
+
+        return result;
     }
 
     public List<Book> searchBookByGenre(String genre) {
-        return null;
+        List<Book> result = new ArrayList<>();
+
+        for (Book b : bookMap.values()) {
+
+            if (b.getGenre().equalsIgnoreCase(genre)) {
+                result.add(b);
+            }
+
+        }
+
+        return result;
     }
 
     public void addMember(Member member){
