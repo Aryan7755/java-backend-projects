@@ -48,4 +48,15 @@ public class Library {
         return null;
     }
 
+    public void addMember(Member member){
+
+    }
+
+    public void removeMember(int memberId){
+
+    }
+
+    public void displayMemberDetails(Member member){
+        member.displayDetails();
+    }
 }
