@@ -87,14 +87,42 @@ public class Library {
     }
 
     public void addMember(Member member){
-
+        membersMap.put(member.getMemberId(), member);
+        System.out.println("Member added successfully.");
     }
 
     public void removeMember(int memberId){
-
+        if(membersMap.containsKey(memberId)){
+            membersMap.remove(memberId);
+            System.out.println("Member removed.");
+        }
+        else{
+            System.out.println("Member not found.");
+        }
     }
 
-    public void displayMemberDetails(Member member){
+    public void displayMemberDetails(int memberId){
+
+        Member member = membersMap.get(memberId);
+
+        if(member == null){
+            System.out.println("Member not found.");
+            return;
+        }
+
         member.displayDetails();
+    }
+
+    public void listAllMembers(){
+
+        if(membersMap.isEmpty()){
+            System.out.println("No members found.");
+            return;
+        }
+
+        for(Member m : membersMap.values()){
+            m.displayDetails();
+        }
+
     }
 }

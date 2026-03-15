@@ -10,6 +10,28 @@ public class Member {
         this.name = name;
         this.issuedBooks = issuedBooks;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getMemberId() {
+        return memberId;
+    }
+
+
+    public List<String> getIssuedBooks() {
+        return issuedBooks;
+    }
+
+    public void setIssuedBooks(List<String> issuedBooks) {
+        this.issuedBooks = issuedBooks;
+    }
+
     public void displayDetails(){
         System.out.println("User Details : ID is "+ memberId +" ,Name is "+name+" and List of Issued Books "+issuedBooks);
     }
