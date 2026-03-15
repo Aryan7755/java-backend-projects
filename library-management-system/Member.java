@@ -1,38 +1,50 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class Member {
-    int memberId;
-    String name;
-    List<String> issuedBooks;
 
-    public Member(int id, String name, List<String> issuedBooks) {
-        this.memberId = id;
+    private int memberId;
+    private String name;
+    private List<Book> issuedBooks;
+
+    public Member(int memberId, String name) {
+        this.memberId = memberId;
         this.name = name;
-        this.issuedBooks = issuedBooks;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.issuedBooks = new ArrayList<>();
     }
 
     public int getMemberId() {
         return memberId;
     }
 
+    public String getName() {
+        return name;
+    }
 
-    public List<String> getIssuedBooks() {
+    public List<Book> getIssuedBooks() {
         return issuedBooks;
     }
 
-    public void setIssuedBooks(List<String> issuedBooks) {
-        this.issuedBooks = issuedBooks;
+    public void addIssuedBook(Book book) {
+        issuedBooks.add(book);
     }
 
-    public void displayDetails(){
-        System.out.println("User Details : ID is "+ memberId +" ,Name is "+name+" and List of Issued Books "+issuedBooks);
+    public void removeIssuedBook(Book book) {
+        issuedBooks.remove(book);
+    }
+
+    public void displayDetails() {
+
+        System.out.println("Member ID: " + memberId);
+        System.out.println("Name: " + name);
+
+        if (issuedBooks.isEmpty()) {
+            System.out.println("No books issued.");
+        } else {
+            System.out.println("Issued Books:");
+            for (Book b : issuedBooks) {
+                b.display();
+            }
+        }
     }
 }
