@@ -125,4 +125,60 @@ public class Library {
         }
 
     }
+
+    public void issueBook(int memberId, int bookId) {
+
+        Book book = bookMap.get(bookId);
+        Member member = membersMap.get(memberId);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        if (member == null) {
+            System.out.println("Member not found.");
+            return;
+        }
+
+        if (book.isIssued()) {
+            System.out.println("Book is already issued.");
+            return;
+        }
+
+        book.setIssued(true);
+        member.addIssuedBook(book);
+
+        issuedBookMap.put(bookId, book);
+
+        System.out.println("Book issued successfully.");
+    }
+
+    public void returnBook(int memberId, int bookId) {
+
+        Book book = bookMap.get(bookId);
+        Member member = membersMap.get(memberId);
+
+        if (book == null) {
+            System.out.println("Book not found.");
+            return;
+        }
+
+        if (member == null) {
+            System.out.println("Member not found.");
+            return;
+        }
+
+        if (!book.isIssued()) {
+            System.out.println("Book was not issued.");
+            return;
+        }
+
+        member.removeIssuedBook(book);
+        book.setIssued(false);
+
+        issuedBookMap.remove(bookId);
+
+        System.out.println("Book returned successfully.");
+    }
 }
