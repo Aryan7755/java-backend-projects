@@ -1,6 +1,3 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -127,30 +124,5 @@ public class Library {
             m.displayDetails();
         }
 
-    }
-
-    public void saveBooksToFile() {
-
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("books.txt"))) {
-
-            for (Book b : bookMap.values()) {
-
-                writer.write(
-                        b.getBookId() + "," +
-                                b.getTitle() + "," +
-                                b.getAuthor() + "," +
-                                b.getGenre() + "," +
-                                b.isIssued()
-                );
-
-                writer.newLine();
-            }
-
-            System.out.println("Books saved successfully.");
-
-        } catch (IOException e) {
-            System.out.println("Error saving books.");
-            e.printStackTrace();
-        }
     }
 }
