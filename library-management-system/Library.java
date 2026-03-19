@@ -225,4 +225,16 @@ public class Library {
             System.out.println("Error loading members.");
         }
     }
+
+    public void listAllBooks() {
+
+        if (bookMap.isEmpty()) {
+            System.out.println("No books available.");
+            return;
+        }
+
+        for (Book b : bookMap.values()) {
+            b.display();
+        }
+    }
 }
