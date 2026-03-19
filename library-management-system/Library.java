@@ -114,19 +114,6 @@ public class Library {
         member.displayDetails();
     }
 
-    public void listAllMembers(){
-
-        if(membersMap.isEmpty()){
-            System.out.println("No members found.");
-            return;
-        }
-
-        for(Member m : membersMap.values()){
-            m.displayDetails();
-        }
-
-    }
-
     public void addBooksToFile() {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("books.txt"))) {
@@ -235,6 +222,34 @@ public class Library {
 
         for (Book b : bookMap.values()) {
             b.display();
+        }
+    }
+
+    public void listAllMembers() {
+
+        if (membersMap.isEmpty()) {
+            System.out.println("No members found.");
+            return;
+        }
+
+        for (Member m : membersMap.values()) {
+            m.displayDetails();
+        }
+    }
+
+    public void listIssuedBooks() {
+
+        boolean found = false;
+
+        for (Book b : bookMap.values()) {
+            if (b.isIssued()) {
+                b.display();
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No issued books.");
         }
     }
 }
