@@ -127,7 +127,7 @@ public class Library {
 
     }
 
-    public void saveBooksToFile() {
+    public void addBooksToFile() {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("books.txt"))) {
 
@@ -151,7 +151,7 @@ public class Library {
         }
     }
 
-    public void loadBooksFromFile() {
+    public void getBooksFromFile() {
 
         try (BufferedReader reader = new BufferedReader(new FileReader("books.txt"))) {
 
@@ -177,6 +177,27 @@ public class Library {
 
         } catch (IOException e) {
             System.out.println("Error loading books.");
+        }
+    }
+
+    public void addMembersToFile() {
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("members.txt"))) {
+
+            for (Member m : membersMap.values()) {
+
+                writer.write(
+                        m.getMemberId() + "," +
+                                m.getName()
+                );
+
+                writer.newLine();
+            }
+
+            System.out.println("Members saved successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Error saving members.");
         }
     }
 }
