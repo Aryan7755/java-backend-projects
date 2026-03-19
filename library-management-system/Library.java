@@ -245,4 +245,11 @@ public class Library {
                 .sorted((b1, b2) -> b1.getTitle().compareToIgnoreCase(b2.getTitle()))
                 .forEach(Book::display);
     }
+
+    public void sortBooksByAuthor() {
+
+        bookMap.values().stream()
+                .sorted((b1, b2) -> b1.getAuthor().compareToIgnoreCase(b2.getAuthor()))
+                .forEach(Book::display);
+    }
 }
