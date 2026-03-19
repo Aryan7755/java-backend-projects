@@ -223,20 +223,10 @@ public class Library {
         }
     }
 
-    public void listIssuedBooks() {
-
-        boolean found = false;
-
-        for (Book b : bookMap.values()) {
-            if (b.isIssued()) {
-                b.display();
-                found = true;
-            }
-        }
-
-        if (!found) {
-            System.out.println("No issued books.");
-        }
+    public List<Book> getIssuedBooks() {
+        return bookMap.values().stream()
+                .filter(Book::isIssued)
+                .toList();
     }
 
     public void sortBooksByTitle() {
