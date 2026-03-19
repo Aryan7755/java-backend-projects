@@ -52,18 +52,11 @@ public class Library {
                 .forEach(Book::display);
     }
 
-    public List<Book> searchBookByAuthor(String author) {
-        List<Book> result = new ArrayList<>();
+    public void searchBookByAuthor(String author) {
 
-        for (Book b : bookMap.values()) {
-
-            if (b.getAuthor().equalsIgnoreCase(author)) {
-                result.add(b);
-            }
-
-        }
-
-        return result;
+        bookMap.values().stream()
+                .filter(b -> b.getAuthor().equalsIgnoreCase(author))
+                .forEach(Book::display);
     }
 
     public List<Book> searchBookByGenre(String genre) {
