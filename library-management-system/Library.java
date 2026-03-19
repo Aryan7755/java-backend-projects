@@ -45,18 +45,11 @@ public class Library {
         return bookMap.get(bookId);
     }
 
-    public List<Book> searchBookByTitle(String title) {
-        List<Book> result = new ArrayList<>();
+    public void searchBookByTitle(String keyword) {
 
-        for (Book b : bookMap.values()) {
-
-            if (b.getTitle().equalsIgnoreCase(title)) {
-                result.add(b);
-            }
-
-        }
-
-        return result;
+        bookMap.values().stream()
+                .filter(b -> b.getTitle().toLowerCase().contains(keyword.toLowerCase()))
+                .forEach(Book::display);
     }
 
     public List<Book> searchBookByAuthor(String author) {
