@@ -200,4 +200,29 @@ public class Library {
             System.out.println("Error saving members.");
         }
     }
+
+    public void getMembersFromFile() {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("members.txt"))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                String[] parts = line.split(",");
+
+                int id = Integer.parseInt(parts[0]);
+                String name = parts[1];
+
+                Member member = new Member(id, name);
+
+                membersMap.put(id, member);
+            }
+
+            System.out.println("Members loaded successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Error loading members.");
+        }
+    }
 }
