@@ -238,4 +238,11 @@ public class Library {
             System.out.println("No issued books.");
         }
     }
+
+    public void sortBooksByTitle() {
+
+        bookMap.values().stream()
+                .sorted((b1, b2) -> b1.getTitle().compareToIgnoreCase(b2.getTitle()))
+                .forEach(Book::display);
+    }
 }
