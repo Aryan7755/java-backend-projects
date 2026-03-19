@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -153,4 +151,32 @@ public class Library {
         }
     }
 
+    public void loadBooksFromFile() {
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("books.txt"))) {
+
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+
+                String[] parts = line.split(",");
+
+                int id = Integer.parseInt(parts[0]);
+                String title = parts[1];
+                String author = parts[2];
+                String genre = parts[3];
+                boolean isIssued = Boolean.parseBoolean(parts[4]);
+
+                Book book = new Book(id, title, author, genre);
+                book.setIssued(isIssued);
+
+                bookMap.put(id, book);
+            }
+
+            System.out.println("Books loaded successfully.");
+
+        } catch (IOException e) {
+            System.out.println("Error loading books.");
+        }
+    }
 }
