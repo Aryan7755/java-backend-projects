@@ -156,6 +156,7 @@ public class Library {
                 book.setIssued(isIssued);
 
                 bookMap.put(id, book);
+                bookIdCounter = Math.max(bookIdCounter, id + 1);
             }
 
             System.out.println("Books loaded successfully.");
@@ -202,6 +203,7 @@ public class Library {
                 Member member = new Member(id, name);
 
                 membersMap.put(id, member);
+                memberIdCounter = Math.max(memberIdCounter, id + 1);
             }
 
             System.out.println("Members loaded successfully.");
