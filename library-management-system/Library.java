@@ -22,6 +22,11 @@ public class Library {
         bookMap.put(book.getBookId(), book);
         System.out.println("Book added successfully.");
     }
+
+    public void addBook(String title, String author, String genre) {
+        Book book = new Book(bookIdCounter++, title, author, genre);
+        addBook(book); // reuse existing method
+    }
     public void removeBook(int bookId) {
         if (bookMap.containsKey(bookId)) {
             bookMap.remove(bookId);
