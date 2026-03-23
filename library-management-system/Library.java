@@ -276,4 +276,26 @@ public class Library {
     public void issueBook(int memberId, int bookId) {
         issueBook(membersMap.get(memberId), bookMap.get(bookId));
     }
+
+    public void returnBook(Member member, Book book) {
+
+        if (member == null || book == null) {
+            System.out.println("Invalid member or book.");
+            return;
+        }
+
+        if (!book.isIssued()) {
+            System.out.println("Book was not issued.");
+            return;
+        }
+
+        book.setIssued(false);
+        member.removeIssuedBook(book);
+
+        System.out.println("Book returned successfully.");
+    }
+
+    public void returnBook(int memberId, int bookId) {
+        returnBook(membersMap.get(memberId), bookMap.get(bookId));
+    }
 }
