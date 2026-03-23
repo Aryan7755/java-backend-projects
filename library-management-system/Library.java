@@ -254,4 +254,26 @@ public class Library {
                 .sorted((b1, b2) -> b1.getAuthor().compareToIgnoreCase(b2.getAuthor()))
                 .forEach(Book::display);
     }
+
+    public void issueBook(Member member, Book book) {
+
+        if (member == null || book == null) {
+            System.out.println("Invalid member or book.");
+            return;
+        }
+
+        if (book.isIssued()) {
+            System.out.println("Book already issued.");
+            return;
+        }
+
+        book.setIssued(true);
+        member.addIssuedBook(book);
+
+        System.out.println("Book issued successfully.");
+    }
+
+    public void issueBook(int memberId, int bookId) {
+        issueBook(membersMap.get(memberId), bookMap.get(bookId));
+    }
 }
