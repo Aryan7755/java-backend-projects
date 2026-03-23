@@ -7,6 +7,8 @@ public class Library {
     HashMap<Integer,Book> bookMap;
     HashMap<Integer,Member> membersMap;
     HashMap<Integer,Book> issuedBookMap;
+    private int bookIdCounter = 1;
+    private int memberIdCounter = 1;
 
     public Library() {
         bookMap = new HashMap<>();
