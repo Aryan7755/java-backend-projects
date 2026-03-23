@@ -235,12 +235,6 @@ public class Library {
         }
     }
 
-    public List<Book> getIssuedBooks() {
-        return bookMap.values().stream()
-                .filter(Book::isIssued)
-                .toList();
-    }
-
     public void sortBooksByTitle() {
 
         bookMap.values().stream()
@@ -297,5 +291,22 @@ public class Library {
 
     public void returnBook(int memberId, int bookId) {
         returnBook(membersMap.get(memberId), bookMap.get(bookId));
+    }
+
+    public List<Book> getIssuedBooksList() {
+        return bookMap.values().stream()
+                .filter(Book::isIssued)
+                .toList();
+    }
+
+    public void getIssuedBooks() {
+        List<Book> issued = getIssuedBooksList();
+
+        if (issued.isEmpty()) {
+            System.out.println("No books are currently issued.");
+            return;
+        }
+
+        issued.forEach(Book::display);
     }
 }
