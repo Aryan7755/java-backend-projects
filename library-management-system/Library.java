@@ -85,6 +85,11 @@ public class Library {
         System.out.println("Member added successfully.");
     }
 
+    public void addMember(String name) {
+        Member member = new Member(memberIdCounter++, name);
+        addMember(member); // reuse existing method
+    }
+
     public void removeMember(int memberId){
         if(membersMap.containsKey(memberId)){
             membersMap.remove(memberId);
